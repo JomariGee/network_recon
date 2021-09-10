@@ -24,6 +24,13 @@
 # Pass Fping to Nmap 
 	echo"" 
 	echo $Orange
-	echo "----------------------- Nmap --------------------------"
+	echo "----------------------- Fast Nmap Scan --------------------------"
 	echo $White
-	nmap -A -iL fping.txt | tee ./mass_targets_nmap.txt
+	nmap -A -iL fping.txt | tee ./nmap.txt
+
+# Scan All Ports w/Nmap
+# Added this in because I didn't want to eventually miss something with the scan above, but still want fast resutls
+	echo $Purple
+	echo "----------------------- Full Port Scan --------------------------"	
+	echo $White
+	nmap -A -v -Pn -p- -T4 --open -n -iL fping.txt | tee ./full_nmap.txt
